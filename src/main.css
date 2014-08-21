@@ -1,0 +1,36 @@
+  body{
+      margin: 0px;
+  }
+   #showplace{
+       /*position: absolute;*/
+            /*width: 100%;*/
+         
+        
+        }
+   #container{
+      	 width: 100%;
+        
+   }
+   #control{
+       position: relative;
+       width: 100%;
+       height: 60px;
+       background-color: gray;
+
+   }
+.headroom--pinned{
+    position: fixed;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+}
+.headroom--top.headroom--pinned{
+    position: relative;
+}
+.btn{
+	cursor: pointer;
+}
+.Chide{
+	display: none;
+}
