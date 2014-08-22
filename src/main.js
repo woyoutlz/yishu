@@ -29,11 +29,7 @@ var nowImageUrl=""
 var nowImageIndex = 0;
 var ImageUrlArray = [];
 var allImageNum = imageDic.length;
-$("#showplace").lazyload({ 
-placeholder: "http://www.baidu.com/img/baidu_jgylogo3.gif", 
-effect: "fadeIn", 
-failurelimit: 10 
-});
+
 function urlAtIndex(num){
 	var obj = imageDic[num];
 	return obj['url'];
@@ -107,8 +103,11 @@ $(".imgsrc").click(function(){
  	$("#showplace").remove();
  	
  	$("#container").append(html);
+ 	$("#showplace").load(function(){
+ 		alert(1);
+ 	})
  }
- $("#load").click(function(){
- 	changeImageUrl("http://woyoutlz.github.io/yishu/res/4.jpg")
- })
+ 	// $("#showplace")[0].onload =function(){
+ 	// 	alert("ok")
+ 	// }
 })
