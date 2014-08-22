@@ -104,10 +104,13 @@ $(".imgsrc").click(function(){
  	
  	$("#container").append(html);
  	$("#showplace").load(function(){
- 		alert(1);
+ 		imgloaded();
  	})
+ }
+ function imgloaded(){
+ 	
  }
  	// $("#showplace")[0].onload =function(){
  	// 	alert("ok")
  	// }
-})
+ })
