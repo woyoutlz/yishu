@@ -29,6 +29,11 @@ var nowImageUrl=""
 var nowImageIndex = 0;
 var ImageUrlArray = [];
 var allImageNum = imageDic.length;
+$("#showplace").lazyload({ 
+placeholder: "http://www.baidu.com/img/baidu_jgylogo3.gif", 
+effect: "fadeIn", 
+failurelimit: 10 
+});
 function urlAtIndex(num){
 	var obj = imageDic[num];
 	return obj['url'];
@@ -55,45 +60,55 @@ loadImageAtIndex(0);
 //目录
 $("#mulu").click(function(){
 	$.layer({
-	type: 1,
-	area:  ['460px', '280px'],
-	title: false,
-	border: [0],
-	shadeClose: true,
-	page: {dom : '#muluDiv'}
-});
+		type: 1,
+		area:  ['460px', '280px'],
+		title: false,
+		border: [0],
+		shadeClose: true,
+		page: {dom : '#muluDiv'}
+	});
 })
 function loadImageUrl(url){
 	if (!url) {
- 		return false;
- 	};
- 	url = respath+url
- 	$("#showplace").attr("src",url);
- 	return true;
+		return false;
+	};
+	url = respath+url
+	changeImageUrl(url);
+	return true;
 
 }
- $(".imgsrc").click(function(){
+$(".imgsrc").click(function(){
 
- 	var index = $(this).attr("imgindex");
- 	loadImageAtIndex(index);
+	var index = $(this).attr("imgindex");
+	loadImageAtIndex(index);
 
- })
+})
  // 上一条
- 	$("#beforeItem").click(function(){
- 		var num = nowImageIndex -1;
- 		if (num <0){
- 			alert("这是第一条了")
- 		}else{
- 			loadImageAtIndex(num)
- 		}
- 	})
+ $("#beforeItem").click(function(){
+ 	var num = nowImageIndex -1;
+ 	if (num <0){
+ 		alert("这是第一条了")
+ 	}else{
+ 		loadImageAtIndex(num)
+ 	}
+ })
  //下一条
- 	$("#nextItem").click(function(){
- 		var num = nowImageIndex +1;
- 		if (num >=allImageNum){
- 			alert("这是最后一条了")
- 		}else{
- 			loadImageAtIndex(num)
- 		}
- 	})
+ $("#nextItem").click(function(){
+ 	var num = nowImageIndex +1;
+ 	if (num >=allImageNum){
+ 		alert("这是最后一条了")
+ 	}else{
+ 		loadImageAtIndex(num)
+ 	}
+ })
+ function  changeImageUrl(url){
+ 	$("#showplace").attr("src",url);
+ 	html = $("#container").html();
+ 	$("#showplace").remove();
+ 	
+ 	$("#container").append(html);
+ }
+ $("#load").click(function(){
+ 	changeImageUrl("http://woyoutlz.github.io/yishu/res/4.jpg")
+ })
 })
